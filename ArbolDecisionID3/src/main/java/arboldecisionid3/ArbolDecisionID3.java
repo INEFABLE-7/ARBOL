@@ -94,9 +94,19 @@ public static String claseMasComun(List<String[]> datos, String clase) {
         String claseEjemplo = ejemplo[ejemplo.length - 1];
         frecuenciaClases.put(claseEjemplo, frecuenciaClases.getOrDefault(claseEjemplo, 0) + 1);
     }
-
+    
+    int maxFrecuencia = -1;
+    String claseMasComun = null;
+    for (String key : frecuenciaClases.keySet()) {
+        int frecuencia = frecuenciaClases.get(key);
+        if (frecuencia > maxFrecuencia) {
+            maxFrecuencia = frecuencia;
+            claseMasComun = key;
+        }
+    }
+    return claseMasComun;
 }
-
+}
 
             
 
