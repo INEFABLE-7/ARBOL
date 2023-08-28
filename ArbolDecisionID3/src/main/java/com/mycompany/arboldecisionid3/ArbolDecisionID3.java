@@ -36,6 +36,12 @@ public class ArbolDecisionID3 {
         datos.add(new String[]{"Lluvioso", "Fresco", "Normal", "Sí"});
         datos.add(new String[]{"Nublado", "Fresco", "Normal", "Sí"});
         datos.add(new String[]{"Soleado", "Templado", "Alta", "No"});
+        
+            String[] atributos = {"Clima", "Temperatura", "Humedad"};
+        NodoArbol arbol = construirArbol(datos, atributos, "JugarTenis");
+
+        imprimirArbol(arbol, "");
+    
      
         
     }
