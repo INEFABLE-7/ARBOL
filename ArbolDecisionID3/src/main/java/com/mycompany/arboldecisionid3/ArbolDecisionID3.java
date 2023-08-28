@@ -12,6 +12,9 @@ import java.util.List;
 
 import java.util.List;
 
+import java.util.List;
+import java.util.Map;
+
 class NodoArbol {
     String atributo;
     Map<String, NodoArbol> hijos;
@@ -56,3 +59,9 @@ public class ArbolDecisionID3 {
             nodoHoja.resultado = claseMasComun(datos, clase);
             return nodoHoja;
         }
+  
+   String mejorAtributo = calcularMejorAtributo(datos, atributos, clase);
+
+        NodoArbol nodo = new NodoArbol(mejorAtributo);
+        Map<String, List<String[]>> subconjuntos = dividirDatos(datos, mejorAtributo, atributos);
+
