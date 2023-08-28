@@ -126,6 +126,16 @@ public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, Str
     Map<String, List<String[]>> subconjuntos = new HashMap<>();
     int indiceAtributo = Arrays.asList(atributos).indexOf(atributo);
 
+    for (String[] ejemplo : datos) {
+        String valorAtributo = ejemplo[indiceAtributo];
+        subconjuntos.putIfAbsent(valorAtributo, new ArrayList<>());
+        subconjuntos.get(valorAtributo).add(ejemplo);
+    }
+
+    return subconjuntos;
+}
+}
+
 
 
 
