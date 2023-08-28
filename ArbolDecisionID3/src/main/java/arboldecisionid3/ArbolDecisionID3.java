@@ -147,5 +147,14 @@ public static double calcularEntropia(List<String[]> datos, String clase) {
         String claseEjemplo = ejemplo[ejemplo.length - 1];
         frecuenciaClases.put(claseEjemplo, frecuenciaClases.getOrDefault(claseEjemplo, 0) + 1);
     }
+double entropia = 0;
+    for (String key : frecuenciaClases.keySet()) {
+        double probabilidad = (double) frecuenciaClases.get(key) / totalEjemplos;
+        entropia -= probabilidad * Math.log(probabilidad) / Math.log(2);
+    }
+
+    return entropia;
+}
+}
 
 
