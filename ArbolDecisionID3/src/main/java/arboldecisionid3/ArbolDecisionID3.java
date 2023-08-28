@@ -122,7 +122,9 @@ public static String calcularMejorAtributo(List<String[]> datos, String[] atribu
 
     return mejorAtributo;
 }
-}
+public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, String atributo, String[] atributos) {
+    Map<String, List<String[]>> subconjuntos = new HashMap<>();
+    int indiceAtributo = Arrays.asList(atributos).indexOf(atributo);
 
 
 
