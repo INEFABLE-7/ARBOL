@@ -155,6 +155,15 @@ double entropia = 0;
 
     return entropia;
 }
-}
+public static double calcularEntropiaAtributo(List<String[]> datos, String atributo, String[] atributos, String clase) {
+    int indiceAtributo = Arrays.asList(atributos).indexOf(atributo);
+
+    Map<String, Integer> frecuenciaValores = new HashMap<>();
+    Map<String, Map<String, Integer>> frecuenciaValoresClase = new HashMap<>();
+
+
+
+
+
 
 
