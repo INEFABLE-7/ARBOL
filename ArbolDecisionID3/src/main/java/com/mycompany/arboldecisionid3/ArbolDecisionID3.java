@@ -17,6 +17,8 @@ import java.util.Map;
 
 import java.util.List;
 
+import java.util.List;
+
 class NodoArbol {
     String atributo;
     Map<String, NodoArbol> hijos;
@@ -75,7 +77,26 @@ public class ArbolDecisionID3 {
                 nodoHoja.resultado = claseMasComun(datos, clase);
                 nodo.hijos.put(valor, nodoHoja);
                 
-            } 
+            }   else {
+                String[] nuevosAtributos = quitarAtributo(atributos, mejorAtributo);
+                NodoArbol subArbol = construirArbol(subconjunto, nuevosAtributos, clase);
+                nodo.hijos.put(valor, subArbol);
+            }
+        }
+
+        return nodo;
+    }
+     
+public static boolean todosEjemplosSonDeLaMismaClase(List<String[]> datos, String clase) {
+    String primeraClase = [datos.get(0).length - 1];
+    for (String[] ejemplo : datos) {
+        if (!ejemplo[ejemplo.length - 1].equals(primeraClase)) {
+            return false;
+        }
+    }
+    return true;
+}
+
             
 
 
