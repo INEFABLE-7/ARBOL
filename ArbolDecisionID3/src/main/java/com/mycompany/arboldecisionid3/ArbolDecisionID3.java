@@ -15,6 +15,8 @@ import java.util.List;
 import java.util.List;
 import java.util.Map;
 
+import java.util.List;
+
 class NodoArbol {
     String atributo;
     Map<String, NodoArbol> hijos;
@@ -64,4 +66,7 @@ public class ArbolDecisionID3 {
 
         NodoArbol nodo = new NodoArbol(mejorAtributo);
         Map<String, List<String[]>> subconjuntos = dividirDatos(datos, mejorAtributo, atributos);
+        
+        for (String valor : subconjuntos.keySet()) {
+            List<String[]> subconjunto = subconjuntos.get(valor);
 
