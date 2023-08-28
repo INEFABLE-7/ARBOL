@@ -88,13 +88,14 @@ public class ArbolDecisionID3 {
     }
      
 public static boolean todosEjemplosSonDeLaMismaClase(List<String[]> datos, String clase) {
-    String primeraClase = [datos.get(0).length - 1];
+    String primeraClase =datos.get(0)[datos.get(0).length - 1];
     for (String[] ejemplo : datos) {
         if (!ejemplo[ejemplo.length - 1].equals(primeraClase)) {
             return false;
         }
     }
     return true;
+}
 }
 
             
