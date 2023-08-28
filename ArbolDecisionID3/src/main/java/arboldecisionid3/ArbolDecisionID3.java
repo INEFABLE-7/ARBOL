@@ -170,4 +170,22 @@ public static double calcularEntropiaAtributo(List<String[]> datos, String atrib
         }
         frecuenciaValoresClase.get(valorAtributo).put(claseEjemplo, frecuenciaValoresClase.get(valorAtributo).getOrDefault(claseEjemplo, 0) + 1);
     }
+    
+    double entropiaAtributo = 0;
+    for (String valor : frecuenciaValores.keySet()) {
+        double probabilidadValor = (double) frecuenciaValores.get(valor) / datos.size();
+        double entropiaValor = 0;
+        for (String claseValor : frecuenciaValoresClase.get(valor).keySet()) {
+            double probabilidadClase = (double) frecuenciaValoresClase.get(valor).get(claseValor) / frecuenciaValores.get(valor);
+            entropiaValor -= probabilidadClase * Math.log(probabilidadClase) / Math.log(2);
+        }
+        entropiaAtributo += probabilidadValor * entropiaValor;
+    }
+
+    return entropiaAtributo;
+}
+}
+
+
+
 
