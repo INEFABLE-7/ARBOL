@@ -51,4 +51,8 @@ public class ArbolDecisionID3 {
             nodoHoja.resultado = datos.get(0)[datos.get(0).length - 1];
             return nodoHoja;
         }
-
+   if (atributos.length == 0) {
+            NodoArbol nodoHoja = new NodoArbol(null);
+            nodoHoja.resultado = claseMasComun(datos, clase);
+            return nodoHoja;
+        }
