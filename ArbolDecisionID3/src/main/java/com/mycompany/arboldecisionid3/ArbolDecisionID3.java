@@ -10,6 +10,8 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.List;
+
 class NodoArbol {
     String atributo;
     Map<String, NodoArbol> hijos;
@@ -41,11 +43,12 @@ public class ArbolDecisionID3 {
         NodoArbol arbol = construirArbol(datos, atributos, "JugarTenis");
 
         imprimirArbol(arbol, "");
-    
      
-        
     }
-}
-
-
+     public static NodoArbol construirArbol(List<String[]> datos, String[] atributos, String clase) {
+        if (todosEjemplosSonDeLaMismaClase(datos, clase)) {
+            NodoArbol nodoHoja = new NodoArbol(null);
+            nodoHoja.resultado = datos.get(0)[datos.get(0).length - 1];
+            return nodoHoja;
+        }
 
