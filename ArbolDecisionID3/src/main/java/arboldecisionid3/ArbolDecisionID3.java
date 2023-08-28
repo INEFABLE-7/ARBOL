@@ -112,7 +112,17 @@ public static String calcularMejorAtributo(List<String[]> datos, String[] atribu
  
     
     double entropiaInicial = calcularEntropia(datos, clase);
+ for (String atributo : atributos) {
+        double ganancia = entropiaInicial - calcularEntropiaAtributo(datos, atributo, atributos, clase);
+        if (ganancia > mejorGanancia) {
+            mejorGanancia = ganancia;
+            mejorAtributo = atributo;
+        }
+    }
 
+    return mejorAtributo;
+}
+}
 
 
 
