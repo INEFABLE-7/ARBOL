@@ -119,7 +119,6 @@ public static String calcularMejorAtributo(List<String[]> datos, String[] atribu
             mejorAtributo = atributo;
         }
     }
-
     return mejorAtributo;
 }
 public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, String atributo, String[] atributos) {
@@ -131,7 +130,6 @@ public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, Str
         subconjuntos.putIfAbsent(valorAtributo, new ArrayList<>());
         subconjuntos.get(valorAtributo).add(ejemplo);
     }
-
     return subconjuntos;
 }
 public static String[] quitarAtributo(String[] atributos, String atributo) {
@@ -152,7 +150,7 @@ double entropia = 0;
         double probabilidad = (double) frecuenciaClases.get(key) / totalEjemplos;
         entropia -= probabilidad * Math.log(probabilidad) / Math.log(2);
     }
-
+    
     return entropia;
 }
 public static double calcularEntropiaAtributo(List<String[]> datos, String atributo, String[] atributos, String clase) {
@@ -161,9 +159,15 @@ public static double calcularEntropiaAtributo(List<String[]> datos, String atrib
     Map<String, Integer> frecuenciaValores = new HashMap<>();
     Map<String, Map<String, Integer>> frecuenciaValoresClase = new HashMap<>();
 
+    for (String[] ejemplo : datos) {
+        String valorAtributo = ejemplo[indiceAtributo];
+        String claseEjemplo = ejemplo[ejemplo.length - 1];
 
+        frecuenciaValores.put(valorAtributo, frecuenciaValores.getOrDefault(valorAtributo, 0) + 1);
 
-
-
-
+        if (!frecuenciaValoresClase.containsKey(valorAtributo)) {
+            frecuenciaValoresClase.put(valorAtributo, new HashMap<>());
+        }
+        frecuenciaValoresClase.get(valorAtributo).put(claseEjemplo, frecuenciaValoresClase.get(valorAtributo).getOrDefault(claseEjemplo, 0) + 1);
+    }
 
