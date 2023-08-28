@@ -6,6 +6,7 @@ package arboldecisionid3;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import java.util.HashMap;
 import java.util.List;
@@ -42,7 +43,6 @@ public class ArbolDecisionID3 {
         NodoArbol arbol = construirArbol(datos, atributos, "JugarTenis");
 
         imprimirArbol(arbol, "");
-     
     }
      public static NodoArbol construirArbol(List<String[]> datos, String[] atributos, String clase) {
         if (todosEjemplosSonDeLaMismaClase(datos, clase)) {
@@ -104,6 +104,7 @@ public static String claseMasComun(List<String[]> datos, String clase) {
             claseMasComun = key;
         }
     }
+    
     return claseMasComun;
 }
 public static String calcularMejorAtributo(List<String[]> datos, String[] atributos, String clase) {
@@ -135,7 +136,7 @@ public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, Str
 public static String[] quitarAtributo(String[] atributos, String atributo) {
     List<String> nuevosAtributos = new ArrayList<>(Arrays.asList(atributos));
     nuevosAtributos.remove(atributo);
-    return nuevosAtributos.toArray(new String[0]);
+    return nuevosAtributos.toArray(String[]::new);
 }
 
 public static double calcularEntropia(List<String[]> datos, String clase) {
@@ -184,7 +185,20 @@ public static double calcularEntropiaAtributo(List<String[]> datos, String atrib
 
     return entropiaAtributo;
 }
+    private static void imprimirArbol(NodoArbol arbol, String espacio) {
+    if (arbol.atributo == null) {
+        System.out.println(espacio + "Resultado: " + arbol.resultado);
+        return;
+    }
+    System.out.println(espacio + arbol.atributo + ":");
+    for (String valor : arbol.hijos.keySet()) {
+        System.out.println(espacio + "  " + valor);
+        imprimirArbol(arbol.hijos.get(valor), espacio + "    ");
+    }
+    }
 }
+
+    
 
 
 
