@@ -69,4 +69,13 @@ public class ArbolDecisionID3 {
         
         for (String valor : subconjuntos.keySet()) {
             List<String[]> subconjunto = subconjuntos.get(valor);
+          
+            if (subconjunto.isEmpty()) {
+                NodoArbol nodoHoja = new NodoArbol(null);
+                nodoHoja.resultado = claseMasComun(datos, clase);
+                nodo.hijos.put(valor, nodoHoja);
+                
+            } 
+            
+
 
