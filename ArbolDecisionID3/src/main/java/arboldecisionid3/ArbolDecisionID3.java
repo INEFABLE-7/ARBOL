@@ -106,8 +106,14 @@ public static String claseMasComun(List<String[]> datos, String clase) {
     }
     return claseMasComun;
 }
-}
+public static String calcularMejorAtributo(List<String[]> datos, String[] atributos, String clase) {
+    double mejorGanancia = -1;
+    String mejorAtributo = null;
+ 
+    
+    double entropiaInicial = calcularEntropia(datos, clase);
 
-            
+
+
 
 
