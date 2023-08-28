@@ -2,22 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.arboldecisionid3;
 package arboldecisionid3;
 
-import java.util.*;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import java.util.List;
-
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import java.util.List;
-
-import java.util.List;
 
 class NodoArbol {
     String atributo;
@@ -96,7 +88,15 @@ public static boolean todosEjemplosSonDeLaMismaClase(List<String[]> datos, Strin
     }
     return true;
 }
+public static String claseMasComun(List<String[]> datos, String clase) {
+    Map<String, Integer> frecuenciaClases = new HashMap<>();
+    for (String[] ejemplo : datos) {
+        String claseEjemplo = ejemplo[ejemplo.length - 1];
+        frecuenciaClases.put(claseEjemplo, frecuenciaClases.getOrDefault(claseEjemplo, 0) + 1);
+    }
+
 }
+
 
             
 
