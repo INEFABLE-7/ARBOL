@@ -134,10 +134,18 @@ public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, Str
 
     return subconjuntos;
 }
-public static String[] quitarAtributo(Strin[] atributos, String atributo) {
+public static String[] quitarAtributo(String[] atributos, String atributo) {
     List<String> nuevosAtributos = new ArrayList<>(Arrays.asList(atributos));
     nuevosAtributos.remove(atributo);
     return nuevosAtributos.toArray(new String[0]);
 }
-}
+
+public static double calcularEntropia(List<String[]> datos, String clase) {
+    int totalEjemplos = datos.size();
+    Map<String, Integer> frecuenciaClases = new HashMap<>();
+    for (String[] ejemplo : datos) {
+        String claseEjemplo = ejemplo[ejemplo.length - 1];
+        frecuenciaClases.put(claseEjemplo, frecuenciaClases.getOrDefault(claseEjemplo, 0) + 1);
+    }
+
 
