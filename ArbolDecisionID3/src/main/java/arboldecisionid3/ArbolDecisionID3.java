@@ -134,8 +134,10 @@ public static Map<String, List<String[]>> dividirDatos(List<String[]> datos, Str
 
     return subconjuntos;
 }
+public static String[] quitarAtributo(Strin[] atributos, String atributo) {
+    List<String> nuevosAtributos = new ArrayList<>(Arrays.asList(atributos));
+    nuevosAtributos.remove(atributo);
+    return nuevosAtributos.toArray(new String[0]);
 }
-
-
-
+}
 
